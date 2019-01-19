@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 	{% if title %}
 		<title>{{ title }} - Excelsior</title>
 	{% else %}
 		<title>Excelsior</title>
 	{% endif %}
+
 	<link href='https://fonts.googleapis.com/css?family=Lora:400,400italic|Work+Sans:300,400,500,600' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/application-startup.css') }}">
@@ -13,7 +16,7 @@
 	<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
 </head>
 <body>
-
+	<script src="https://apis.mapmyindia.com/advancedmaps/v1/pm55lnnwaypmtxgee3wqnfvffhmm4qi6/map_load?v1.1"></script>
 	{% block content %}
 	{% endblock %}
 	
