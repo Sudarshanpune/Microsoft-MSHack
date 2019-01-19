@@ -85,17 +85,19 @@ var featsPlatform = [];
     function getUrlResult(api_url) {
         console.log(api_url);
         $.ajax({
-            type: "POST",
+            type: "GET",
             dataType: 'json',
             url: JSON.stringify(api_url).split("\"")[1],
-            // async: false,
-            data: query,
+            async: false,
+            data: {
+               url: JSON.stringify(api_url).split("\"")[1]
+            },
 
             success: function (response) {
-                console.log(response);
-                var resdata = JSON.parse(response);
-                if (resdata.status == 'success') {
-                    var jsondata = JSON.parse(resdata.data);
+                var resdata = response;
+                if (resdata.results.status == 0) {
+                    console.log(resdata.responseCode);
+                    var jsondata = resdata
                     if (jsondata.responseCode == 200) {
                         console.log(jsondata);
                         route_api_result(jsondata.results);
