@@ -84,38 +84,33 @@ var featsPlatform = [];
 
     function getUrlResult(api_url) {
         console.log(api_url);
-        console.log(JSON.stringify(api_url).split("\"")[1].split("https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route?")[1]);
         $.ajax({
-            type: "POST",
+            type: "GET",
             dataType: 'json',
-            url: "https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route",
+            url: JSON.stringify(api_url).split("\"")[1],
             async: false,
-            data: JSON.stringify(api_url).split("\"")[1].split("https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route?")[1],
+            data: {
+               url: JSON.stringify(api_url).split("\"")[1]
+            },
 
             success: function (response) {
                 var resdata = response;
-                if (resdata.responseCode == 200 || resdata.responseCode==202) {
-                    //var jsondata = resdata.results;
-                    //if (jsondata.responseCode == 200) {
-                        //console.log(jsondata);
-                        route_api_result(resdata.results);
-                    //}
+                if (resdata.results.status == 0) {
+                    console.log(resdata.responseCode);
+                    var jsondata = resdata
+                    if (jsondata.responseCode == 200) {
+                        console.log(jsondata);
+                        route_api_result(jsondata.results);
+                    }
                 } else {
                     var error_response = "No response from API Server. Kindly check the api keys or requested server urls.";
                 }
-            },
-
-            fail: function (response) {
-                console.log("response");
             }
             
         });
     }
     function route_api_result(data) {
-        //console.log(data);
-        var dat = data.trips[1];
-        console.log(dat);
-        if (data.duration != 0) {
+        if (data.trips.duration != 0) {
             var alternate_route1_text = "";
             var alternate_route2_text = "";
             var direct_route = 'Route';
