@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.mmi.LicenceManager
 import com.mmi.MapmyIndiaMapView
-import com.mmi.util.GeoPoint
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,8 +18,6 @@ class MainActivity : AppCompatActivity() {
         val mapmyIndiaMapView = findViewById<MapmyIndiaMapView>(R.id.map)
         val mapView = mapmyIndiaMapView.mapView
 
-        val geoPoint = GeoPoint(48.8583, 2.0, 2944.0)
-        mapView.setCenter(geoPoint)
     }
 
 }
