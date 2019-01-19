@@ -1,2 +1,1 @@
-include ':app', ':view_pager_carousel'
-project(':view_pager_carousel').projectDir = new File('ViewPagerCarousel/app')
+include ':app'

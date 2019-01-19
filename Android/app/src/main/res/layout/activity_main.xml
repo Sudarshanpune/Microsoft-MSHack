@@ -7,9 +7,10 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.mmi.MapmyIndiaMapView
-        android:id="@+id/map"
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent"/>
+        android:id="@+id/mainViewPager"
+        />
 
 </android.support.constraint.ConstraintLayout>

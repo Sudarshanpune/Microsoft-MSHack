@@ -1,9 +1,10 @@
 package com.excelsior.mshack
 
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.mmi.LicenceManager
-import com.mmi.MapmyIndiaMapView
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,8 +16,24 @@ class MainActivity : AppCompatActivity() {
         LicenceManager.getInstance().mapSDKKey = "my7yci3zby43mtrz443ffnjuqs7t8dm7"
         LicenceManager.getInstance().restAPIKey = "r7hd1ec5bhw5rned2bd4cc9r44a1q46t"
 
-        val mapmyIndiaMapView = findViewById<MapmyIndiaMapView>(R.id.map)
-        val mapView = mapmyIndiaMapView.mapView
+        val pager = findViewById<ViewPager>(R.id.mainViewPager)
+
+        pager.adapter = ViewPagerAdapter(supportFragmentManager)
+
+        pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(p0: Int) {
+                return
+            }
+
+            override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
+                return
+            }
+
+            override fun onPageSelected(p0: Int) {
+                Toast.makeText(applicationContext, p0.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
     }
 
