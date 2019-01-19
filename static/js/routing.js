@@ -15,13 +15,25 @@
     //var centre = new L.LatLng(28.610981,77.227434);
 
     /*put your REST API URL with key here**/
+    var geocode_api_url= "https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/geo_code?";
     var route_api_url = 'https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route?';
        window.onload = function () {
-            
+            var centre = new L.LatLng(12.9509,77.6445);
+
             map = new MapmyIndia.Map('map-container', {zoomControl: true, hybrid: true});
-            /***call route api***/
+            /***call route and geo-code api***/
+            get_geocode_result();
             get_route_result();
         }; 
+
+
+        window.onload = function() {
+        
+        
+        
+        
+        
+        };
 
     function get_route_result() {
         remove_start_end_markersList();
