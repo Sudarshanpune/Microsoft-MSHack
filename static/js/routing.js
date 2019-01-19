@@ -15,41 +15,13 @@
     //var centre = new L.LatLng(28.610981,77.227434);
 
     /*put your REST API URL with key here**/
-    var geocode_api_url= "https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/geo_code?";
     var route_api_url = 'https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route?';
        window.onload = function () {
-            var centre = new L.LatLng(12.9509,77.6445);
-
+            
             map = new MapmyIndia.Map('map-container', {zoomControl: true, hybrid: true});
-            /***call route and geo-code api***/
-            get_geocode_result();
+            /***call route api***/
             get_route_result();
         }; 
-
-     /*function to get geocode result from the url*/
-    function get_geocode_result()
-    {
-        var search_id = document.getElementById('search');
-        if (search_id.value == '') {
-            search_id.focus();
-            return false;
-        }
-        var region = document.getElementById('region').value;
-        if(region!='')
-        {
-            region="&region="+region;
-        }
-        var pincode = document.getElementById('pincode').value;
-        if(pincode!='')
-        {
-            pincode="&pincode="+pincode;
-        }
-            document.getElementById('result').innerHTML = '<div style="padding: 0 12px; color: #777">Loading..</div>';/*update best result */
-            document.getElementById('otherresult').innerHTML = '<div style="padding: 0 12px; color: #777">Loading..</div>';/*update other result */
-            var geocode_api_url_with_param = geocode_api_url +"addr=" + search_id.value.replace(/\s/g, "+")+region+pincode;
-            getUrlResult(geocode_api_url_with_param);/*get JSON resp*/
-    }
-
 
     function get_route_result() {
         remove_start_end_markersList();
@@ -111,7 +83,7 @@ var featsPlatform = [];
     }
 
     function getUrlResult(api_url) {
-        console.log(api_url);
+        // console.log(api_url);
         $.ajax({
             type: "GET",
             dataType: 'json',
@@ -123,11 +95,12 @@ var featsPlatform = [];
 
             success: function (response) {
                 var resdata = response;
+                // console.log(response.results.status);
                 if (resdata.results.status == 0) {
-                    console.log(resdata.responseCode);
+                    // console.log(resdata.responseCode);
                     var jsondata = resdata
                     if (jsondata.responseCode == 200) {
-                        console.log(jsondata);
+                        // console.log(jsondata);
                         route_api_result(jsondata.results);
                     }
                 } else {
