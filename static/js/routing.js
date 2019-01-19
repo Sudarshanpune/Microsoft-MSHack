@@ -9,6 +9,7 @@
     var alternatives_o;
     var traffic=0;
     // var map;
+    var marker = [];
     var pathArrdir = [];
     var pth = window.location.href;/*get path of image folder*/
     var full_path = pth.replace(pth.substr(pth.lastIndexOf('/') + 1), '');
@@ -293,7 +294,21 @@ var featsPlatform = [];
         poly[route].addTo(map);
        map.fitBounds(poly[route].getBounds());
     }
+
+    function mapmyindia_removeMarker() {
+        var markerlength = marker.length;
+        if (markerlength > 0) {
+            for (var i = 0; i < markerlength; i++) {
+                map.removeLayer(marker[i]); /* deletion of marker object from the map */
+            }
+        }
+        delete marker;
+        marker = [];
+        // document.getElementById("event-log").innerHTML = "";
+    }
+
     function show_markers(marker_name, points) {
+        // mapmyindia_removeMarker();
         var show_marker;
         var pos = new L.LatLng(points[0], points[1]);
         var title;
@@ -316,16 +331,16 @@ var featsPlatform = [];
             });
         }
         /***marker display, for more about marker, please refer our marker documentation***/
-        //if (icon_marker != '') {
+        if (icon_marker != '') {
         show_marker = new L.marker(pos, {draggable: 'true', icon: icon_marker, title: title}).addTo(map);
-        //} else {
+        } else {
 
-        //  show_marker = new L.marker(pos, {draggable: 'true', title: title}).addTo(map);
-        //}
+         show_marker = new L.marker(pos, {draggable: 'true', title: title}).addTo(map);
+        }
 
         show_marker.bindPopup(title, {closeButton: true, autopan: true, zoomAnimation: true}).openPopup();
         start_end_markersList.push(show_marker);
-
+        marker.push(show_marker);
         show_marker.on('dragend', function (event) {
             var marker = event.target;
             var position = marker.getLatLng();
