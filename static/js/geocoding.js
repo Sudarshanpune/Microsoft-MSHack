@@ -41,7 +41,7 @@
 
         /*function to get Json response from the url*/
         function getGeoResult(api_url) {
-            console.log(api_url);
+            // console.log(api_url);
             $.ajax({
                 type: "GET",
                 dataType: 'json',
@@ -53,7 +53,7 @@
 
                 success: function (result) {
                      var resdata = result;
-                     console.log(resdata);
+                     // console.log(resdata);
                     
                     var jsondata = resdata;
                     
@@ -170,6 +170,23 @@
             var pos1 = new L.LatLng(lat, lng);
             map.setView(pos1, 15);
             show_info_window(pos1, num - 1, marker[num]);
+            console.log('Before Pass Values')
+            pass_values(lat, lng);
+        }
+
+        //Passing lat long to routing
+        function pass_values(lat, lng)
+        {
+            mapmyindia_removeMarker();
+            console.log('In Pass Values');
+            var points1 = new Array();
+            var points2 = new Array();
+            points1[0] = 12.9216;
+            points1[1] = 77.6691;
+            points2[0] = lat;
+            points2[1] = lng;
+            show_markers('Start Point', points1)
+            show_markers('Destination Point', points2)
         }
 
         /*function to show pop up on marker**/
