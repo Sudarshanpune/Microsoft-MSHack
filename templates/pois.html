@@ -4,13 +4,15 @@
 	<div id="menu">
 	    <div class="control-cont">
 	        <div class="div-lbl-sp">Start Points</div>
-	        <input type="text" class="textbox" id="start" value="28.610981,77.227434" placeholder="e.g:28.612960,77.229455" autocomplete="off" /><br/>
+
+	        <input type="text" class="textbox" id="start" value="12.9716,77.5946" placeholder="e.g:28.612960,77.229455" autocomplete="on" /><br/>
+	        
 	        <div class="div-lbl-sp">Via Points (Optional) </div>
-	        <input type="text" class="textbox"  id="via" value="" placeholder="e.g:28.570841,77.325929" autocomplete="off" /><br>
+	        <input type="text" class="textbox"  id="via" value="12.9716,77.5946" placeholder="e.g:28.570841,77.325929" autocomplete="on" /><br>
 	            <div class="div-lbl-sp">Destination Points</div>
 
 	            <div>
-	                <input type="text" class="textbox"  id="destination" value="28.832648,77.243499" placeholder="e.g:27.157015,77.991600" autocomplete="on" />
+	                <input type="text" class="textbox"  id="destination" value="12.832648,77.5946" placeholder="e.g:27.157015,77.991600" autocomplete="on" />
 	            </div>
 
 	            <div class="api-param-list">
@@ -32,6 +34,18 @@
 	                    </select>
 	                </div>
 	            </div>
+				
+				 <div class="api-param-list">
+                        <div style="float:left">Avoids</div>
+                        <div style="float:right">
+                            <select id="avoids" style="width:165px">
+                                <option value="1" selected="">Toll Roads</option>
+                                <option value="2">Ferries</option>
+                                <option value="4" >Unpaved Roads</option>
+                                <option value="8">Highways</option>
+                            </select>
+                        </div>
+                    </div>
 
 	            <div class="api-param-list">
 	                <div style="float:left">Advices</div>
@@ -43,7 +57,7 @@
 	                </div>
 	            </div>
 
-	           <!--  <div class="api-param-list">
+	            <div class="api-param-list">
 	                <div style="float:left">With Alternatives Route</div>
 	                <div style="float:right">
 	                    <select id="alternatives_o" style="width:96px">
@@ -51,7 +65,7 @@
 	                        <option value="false" selected="">False</option>
 	                    </select>
 	                </div>
-	            </div> -->
+	            </div>
 	               
 	              <div style="padding:10px 0 15px 0;font-size:13px;width:250px;"><div style="float:left">Select Region</div>
 					<div style="float:right">
@@ -65,7 +79,7 @@
 					</select>
 				</div></div>
 				
-				<!-- <div style="padding:10px 0 15px 0;font-size:13px;"><div><b>Avoids</b></div>
+				<div style="padding:10px 0 15px 0;font-size:13px;"><div><b>Avoids</b></div>
 					<table>
 						<tr>
 							<td><input style="padding:10px 0 1px 0;font-size:12px;" type="checkbox" class="avoidsPt"></td>
@@ -80,22 +94,24 @@
 							<td>Highways & ferries</td>
 						</tr>
 					</table>
-				</div> -->
+				</div>
 
 	            <div style="margin:20px 0 5px 0px;">
 	                <button onclick="get_route_result()" >Get Route</button>
 	            </div><br>
-	                <!-- <div id="alternate">
+	                <div id="alternate">
 	                    <label>
 	                        <input type="checkbox" id="alternatives"  onclick="alternative_route()" style="float: left" />
 	                        <div id="sh-aval-rt">Show Available Alternative Route</div>
 	                    </label>
-	                </div> -->
+	                </div>
 	                </div>
 	                <div id="info" ></div>
 	                <div class="advice-div" id="direct_advices"></div>
 	                <div class="advice-div" style="display:none" id="alternatives_advices"></div>			
 	                </div>
 	                <div id="map-container"></div>
+						
+	                <script type="text/javascript" src="{{ url_for('static', filename='js/routing.js') }}"></script>
 
 {% endblock content %}
