@@ -21,6 +21,21 @@ class MainActivity : AppCompatActivity() {
 
         pager.setPageTransformer(false, ZoomOutPageTransformer())
 
+        pager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(p0: Int) {
+                return
+            }
+
+            override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
+                return
+            }
+
+            override fun onPageSelected(p0: Int) {
+                return
+            }
+
+        })
+
     }
 
 }
