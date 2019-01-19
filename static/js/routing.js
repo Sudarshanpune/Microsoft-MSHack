@@ -84,31 +84,38 @@ var featsPlatform = [];
 
     function getUrlResult(api_url) {
         console.log(api_url);
+        console.log(JSON.stringify(api_url).split("\"")[1].split("https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route?")[1]);
         $.ajax({
             type: "POST",
             dataType: 'json',
-            url: JSON.stringify(api_url).split("\"")[1],
+            url: "https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route",
             async: false,
-            data: query,
+            data: JSON.stringify(api_url).split("\"")[1].split("https://apis.mapmyindia.com/advancedmaps/v1/q3i84njiznct1jvuk5aj1l76s1m8unsw/route?")[1],
 
             success: function (response) {
-                console.log(response);
-                var resdata = JSON.parse(response);
-                if (resdata.status == 'success') {
-                    var jsondata = JSON.parse(resdata.data);
-                    if (jsondata.responseCode == 200) {
-                        console.log(jsondata);
-                        route_api_result(jsondata.results);
-                    }
+                var resdata = response;
+                if (resdata.responseCode == 200 || resdata.responseCode==202) {
+                    //var jsondata = resdata.results;
+                    //if (jsondata.responseCode == 200) {
+                        //console.log(jsondata);
+                        route_api_result(resdata.results);
+                    //}
                 } else {
                     var error_response = "No response from API Server. Kindly check the api keys or requested server urls.";
                 }
+            },
+
+            fail: function (response) {
+                console.log("response");
             }
             
         });
     }
     function route_api_result(data) {
-        if (data.trips.duration != 0) {
+        //console.log(data);
+        var dat = data.trips[1];
+        console.log(dat);
+        if (data.duration != 0) {
             var alternate_route1_text = "";
             var alternate_route2_text = "";
             var direct_route = 'Route';
