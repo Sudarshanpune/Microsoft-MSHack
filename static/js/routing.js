@@ -26,14 +26,30 @@
             get_route_result();
         }; 
 
+     /*function to get geocode result from the url*/
+    function get_geocode_result()
+    {
+        var search_id = document.getElementById('search');
+        if (search_id.value == '') {
+            search_id.focus();
+            return false;
+        }
+        var region = document.getElementById('region').value;
+        if(region!='')
+        {
+            region="&region="+region;
+        }
+        var pincode = document.getElementById('pincode').value;
+        if(pincode!='')
+        {
+            pincode="&pincode="+pincode;
+        }
+            document.getElementById('result').innerHTML = '<div style="padding: 0 12px; color: #777">Loading..</div>';/*update best result */
+            document.getElementById('otherresult').innerHTML = '<div style="padding: 0 12px; color: #777">Loading..</div>';/*update other result */
+            var geocode_api_url_with_param = geocode_api_url +"addr=" + search_id.value.replace(/\s/g, "+")+region+pincode;
+            getUrlResult(geocode_api_url_with_param);/*get JSON resp*/
+    }
 
-        window.onload = function() {
-        
-        
-        
-        
-        
-        };
 
     function get_route_result() {
         remove_start_end_markersList();
