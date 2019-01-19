@@ -83,7 +83,7 @@ var featsPlatform = [];
     }
 
     function getUrlResult(api_url) {
-        console.log(api_url);
+        // console.log(api_url);
         $.ajax({
             type: "GET",
             dataType: 'json',
@@ -95,11 +95,12 @@ var featsPlatform = [];
 
             success: function (response) {
                 var resdata = response;
+                // console.log(response.results.status);
                 if (resdata.results.status == 0) {
-                    console.log(resdata.responseCode);
+                    // console.log(resdata.responseCode);
                     var jsondata = resdata
                     if (jsondata.responseCode == 200) {
-                        console.log(jsondata);
+                        // console.log(jsondata);
                         route_api_result(jsondata.results);
                     }
                 } else {
