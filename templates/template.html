@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title %}
+		<title>{{ title }} - Excelsior</title>
+	{% else %}
+		<title>Excelsior</title>
+	{% endif %}
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,400italic|Work+Sans:300,400,500,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+
+	{% block content %}
+	{% endblock %}
+	
+</body>
+</html>
