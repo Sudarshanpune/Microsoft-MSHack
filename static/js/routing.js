@@ -88,7 +88,7 @@ var featsPlatform = [];
             type: "POST",
             dataType: 'json',
             url: JSON.stringify(api_url).split("\"")[1],
-            async: false,
+            // async: false,
             data: query,
 
             success: function (response) {
