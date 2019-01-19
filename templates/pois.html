@@ -7,8 +7,8 @@
 			<div class="div-lbl-sp">Enter Location</div>
 			<input type="text" value="Vidhana Soudha" style="width: 254px; margin-right: 10px;padding:5px;border:1px solid #ddd;color:#555" id="search" placeholder="Address, busines or location" autocomplete="on" autofocus="" onkeypress="if (event.which == 13 || event.keyCode == 13)
                                     get_geocode_result()"/>
-            <button onclick="get_geocode_result()" style="margin-top:10px">Search</button>
-            <button onclick="" style="margin-top:10px"><a href="{{ url_for('pois') }}">Navigate</a></button>
+            <button onclick="get_geocode_result()" style="margin-top:10px">Navigate</button>
+            <!-- <button onclick="" style="margin-top:10px"><a href="{{ url_for('pois') }}">Navigate</a></button> -->
                    
              <div style="border-top: 1px solid #e9e9e9;padding:10px; margin-top: 12px" id="result"></div>
                     
@@ -19,7 +19,7 @@
 	        <input type="text" class="textbox" id="start" value="12.9216,77.6691" placeholder="e.g:28.612960,77.229455" autocomplete="on" /><br/>
 	        
 	        <div class="div-lbl-sp">Via Points (Optional) </div>
-	        <input type="text" class="textbox"  id="via" value="12.9716,77.5946" placeholder="e.g:28.570841,77.325929" autocomplete="on" /><br>
+	        <input type="text" class="textbox"  id="via" value="" placeholder="e.g:28.570841,77.325929" autocomplete="on" /><br>
 	            <div class="div-lbl-sp">Destination Points</div>
 
 	            <div>
