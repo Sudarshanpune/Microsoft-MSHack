@@ -128,6 +128,8 @@
                 if (address != '')
                     content.push('<tr><td style="white-space:nowrap" valign="top">Formatted address</td><td width="10px" valign="top">:</td><td valign="top">' + address + '</td></tr>');
                 details.push(content.join(""));
+                console.log('Before Pass Values')
+                pass_values(lat, lng);
                 result_string += '<li onclick="show_geocode_details(' + (num++) + ',' + lng + ',' + lat + ')">' + address + '</li>';
                 }
             else{
@@ -170,14 +172,12 @@
             var pos1 = new L.LatLng(lat, lng);
             map.setView(pos1, 15);
             show_info_window(pos1, num - 1, marker[num]);
-            console.log('Before Pass Values')
-            pass_values(lat, lng);
         }
 
         //Passing lat long to routing
         function pass_values(lat, lng)
         {
-            mapmyindia_removeMarker();
+            remove_markers();
             console.log('In Pass Values');
             var points1 = new Array();
             var points2 = new Array();
@@ -185,8 +185,12 @@
             points1[1] = 77.6691;
             points2[0] = lat;
             points2[1] = lng;
-            show_markers('Start Point', points1)
-            show_markers('Destination Point', points2)
+            // show_markers('Start Point', points1)
+            var destination_points = document.getElementById('destination');
+            destination_points.value = lat + ',' + lng;
+            console.log(destination_points.value)
+            show_markers('Destination Point', points2);
+            get_route_result();
         }
 
         /*function to show pop up on marker**/
