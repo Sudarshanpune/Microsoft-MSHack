@@ -9,7 +9,8 @@ import android.view.ViewGroup
 class MapFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        val view = View.inflate(context, R.layout.fragment_map, null)
+        return view
     }
 
 }

@@ -3,7 +3,6 @@ package com.excelsior.mshack
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
 import com.mmi.LicenceManager
 
 
@@ -20,20 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         pager.adapter = ViewPagerAdapter(supportFragmentManager)
 
-        pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrollStateChanged(p0: Int) {
-                return
-            }
-
-            override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {
-                return
-            }
-
-            override fun onPageSelected(p0: Int) {
-                Toast.makeText(applicationContext, p0.toString(), Toast.LENGTH_SHORT).show()
-            }
-
-        })
+        pager.setPageTransformer(false, ZoomOutPageTransformer())
 
     }
 
