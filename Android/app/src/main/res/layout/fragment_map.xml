@@ -11,15 +11,10 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.mmi.MapmyIndiaMapView
+            <WebView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/map"/>
-
-            <android.support.design.widget.FloatingActionButton
-                android:layout_height="56dp"
-                android:layout_width="56dp"
-                android:id="@+id/navigate" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 

@@ -8,7 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/MapmyIndiaAndroidSDK_v6.1.1" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

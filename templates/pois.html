@@ -4,7 +4,7 @@
 	<div id="menu">
 		
 	    <div class="control-cont">
-			<div class="div-lbl-sp">Enter Location</div>
+			<div class="div-lbl-sp">{{ location }}</div>
 			<input type="text" value="Vidhana Soudha" style="width: 254px; margin-right: 10px;padding:5px;border:1px solid #ddd;color:#555" id="search" placeholder="Address, busines or location" autocomplete="on" autofocus="" onkeypress="if (event.which == 13 || event.keyCode == 13)
                                     get_geocode_result()"/>
             <button onclick="get_geocode_result()" style="margin-top:10px">Navigate</button>
