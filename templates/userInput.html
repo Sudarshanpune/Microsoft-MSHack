@@ -55,7 +55,7 @@
                                 case 3:
                                     tr = "Clothing";
                                     break;
-                                default: tr = "Science"
+                                default: tr = "Science";
                             }
                             $.ajax({
                                 url: 'http://127.0.0.1:5000/userinput',
@@ -64,9 +64,17 @@
                                     "cuisine": document.getElementById("cuisine").value,
                                     "touring": tr
                                 },
-                                method: 'GET'
+                                method: 'GET',
+                                success: function(result){
+                                  var mapvalx = result.mapval;
+                                  
+                                  var placeval = result.placeval;
+                                  var timeval = result.timeval;
+                                  window.location.replace("http://127.0.0.1:5000/POIs?mapval="+mapvalx);
+                                }
                             });
                         }
+                        // return;
                     </script>
                 </button>
             </div>

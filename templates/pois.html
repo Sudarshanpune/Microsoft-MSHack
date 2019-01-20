@@ -129,6 +129,19 @@
 	                <div id="map-container"></div>
 	                <div id="map-container1"></div>
 						
+						<script>
+							$urlParam = function(name){
+								var results = new RegExp('[\?&#]' + name + '[^&#]*').exec(window.location.href);
+								if(results==null){
+									return null;
+								}
+								return decodeURI(results[1]) || 0;
+							}
+							var stri = $.urlParam('mapval');
+							var lat = double(stri.split(',')[0]);
+							var long = double(stri.split(',')[1]);
+							pass_values(lat, long);
+						</script>
 					<script type="text/javascript" src="{{ url_for('static', filename='js/geocoding.js') }}"></script>
 					<script type="text/javascript" src="{{ url_for('static', filename='js/nearby.js') }}"></script>
 	                <script type="text/javascript" src="{{ url_for('static', filename='js/routing.js') }}"></script>

@@ -59,16 +59,13 @@ def refer():
 
 @app.route('/userinput', methods=['GET', 'POST'])
 def user_input():
-	print(str(request.args))
 	if request.args is None or len(request.args) == 0:
 		return render_template('userInput.html')
 	else:
 		mapval = maps[request.args['touring']]
 		timeval = times[mapval]
 		placeval = places[mapval]
-
-		print(str(mapval)+"\n"+str(timeval)+"\n"+ str(placeval))
-		return render_template('pois.html', mapval=mapval, timeval=timeval, placeval=placeval)
+		return json.dumps ({'mapval':mapval, 'timeval':timeval, 'placeval':placeval})
 
 @app.route('/jsonParse', methods=['GET', 'POST'])
 def printJson():
