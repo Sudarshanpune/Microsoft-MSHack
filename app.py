@@ -65,7 +65,9 @@ def user_input():
 		mapval = maps[request.args['touring']]
 		timeval = times[mapval]
 		placeval = places[mapval]
-		return json.dumps ({'mapval':mapval, 'timeval':timeval, 'placeval':placeval})
+		j = json.dumps({'mapval':mapval, 'timeval':timeval, 'placeval':placeval})
+		pprint.pprint(j)
+		return j
 
 @app.route('/jsonParse', methods=['GET', 'POST'])
 def printJson():
@@ -95,5 +97,9 @@ def oauth():
 		'refLocation': '28.631460,77.217423'
 	})
 	return str(r2.status_code), 200
+
+@app.route('/chat')
+def chat():
+	return render_template('chatbot.html')
 
 app.run(debug=True)

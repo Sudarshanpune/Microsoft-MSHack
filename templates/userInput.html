@@ -65,11 +65,12 @@
                                     "touring": tr
                                 },
                                 method: 'GET',
-                                success: function(result){
+                                success: function(result) {
                                   var mapvalx = result.mapval;
                                   
                                   var placeval = result.placeval;
                                   var timeval = result.timeval;
+                                  console.log(mapvalx);
                                   window.location.replace("http://127.0.0.1:5000/POIs?mapval="+mapvalx);
                                 }
                             });
