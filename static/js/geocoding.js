@@ -1,5 +1,5 @@
-        var lng = 12.9794;
-        var lat = 77.5910;
+        var lat = 12.9794;
+        var lng = 77.5910;
         var url_result;
 
         var all_result = [];
