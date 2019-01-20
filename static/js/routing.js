@@ -113,6 +113,7 @@ var featsPlatform = [];
     }
     function route_api_result(data) {
         if (data.trips.duration != 0) {
+            
             var alternate_route1_text = "";
             var alternate_route2_text = "";
             var direct_route = 'Route';
@@ -130,7 +131,10 @@ var featsPlatform = [];
                 document.getElementById(\'alternatives_advices\').style.display=\'inline-block\';alternative_route(0)">\n\
                 <span style="font-size:13px;padding:2px 0 20px 0;color:#222">Route 2</span><br>\n\
                 <span style="font-size:11px;line-height:16px;color:#555">' + total_time1 + '<br>' + length1.toFixed(1) + ' km</div></td>';
+                console.log('Total Distance: ' + length1.toFixed(1));
+                console.log('ETA: ' + total_time1);
                 direct_route = 'Route 1';
+                
             }
             /***get second alternative route***/
             if (typeof alternate_route[1] != 'undefined') {
@@ -145,7 +149,9 @@ var featsPlatform = [];
                 document.getElementById(\'alternatives_advices\').style.display=\'inline-block\';alternative_route(1)">\n\
                 <span style="font-size:13px;padding:2px 0 20px 0;color:#222">Route 3</span><br>\n\
                 <span style="font-size:11px;line-height:16px;color:#555">' + total_time2 + '<br>' + length2.toFixed(1) + ' km</div></td>';
-            }
+            }   
+
+
             /***check & display alternative route option*****/
             var show_pts='';
             var way = data.trips[0];
@@ -306,6 +312,8 @@ var featsPlatform = [];
         marker = [];
         // document.getElementById("event-log").innerHTML = "";
     }
+
+
 
     function show_markers(marker_name, points) {
         // mapmyindia_removeMarker();
